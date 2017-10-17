@@ -18,7 +18,7 @@ class DefaultParser(Parser):
         pass
 
     def parse_link(self, resp):
-        soup = BeautifulSoup(resp, 'html.parser')
+        soup = BeautifulSoup(resp, 'html.parser') # TODO: Add option to change parser.
 
         for a in soup.find_all('a', href=True):
             yield a['href']

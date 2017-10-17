@@ -24,7 +24,7 @@ class Crawler:
         self.max_redirect = max_redirect
         self.max_tries = max_tries
         self.max_tasks = max_tasks
-        self.task_queue = set() # asyncio.Queue(loop=self.loop)
+        self.task_queue = set() # TODO: add scheduler for queue management.
         self.seen_urls = set()
         self.done = []
         self.root_domains = set()
@@ -53,7 +53,7 @@ class Crawler:
         self.t0 = time.time()
         for task in range(1): #self.task_queue:
             resp = self.fetcher.fetch('https://stackoverflow.com', 443)
-            #self.validate_response(resp)
+            # TODO: Implement self.validate_response(resp)
             new_urls = self.parser.parse_link(resp)
             print('new urls', list(new_urls))
         self.t1 = time.time()
